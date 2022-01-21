@@ -3,18 +3,18 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 import Alert from './components/Alert';
-//import About from './components/About';
+import About from './components/About';
 import React, { useState } from 'react';//using imrs command
 
 
 
 //import React from "react";
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//  // Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+ // Link
+} from "react-router-dom";
 
 
 //let name="Pushkar";//This will act as attribute to jsx
@@ -33,7 +33,18 @@ function App() { //it is a function based component . In return only one element
     setAlert(null);
   }, 1500);
   }
-  const toggle=()=>{
+
+  // const removeBodyClass=()=>{  // this function is used to remove previous bootstrap classes on body 
+  //   document.body.classList.remove("bg-primary");
+  //   document.body.classList.remove("bg-success");
+  //   document.body.classList.remove("bg-warning");
+  //   document.body.classList.remove("bg-danger");
+  // }
+
+  // const toggle=(cls)=>{   for color pallets
+    const toggle=()=>{
+    //removeBodyClass();
+    //document.body.classList.add("bg-"+cls);  //to add bootstrap respective class to body
     if(mode=="light"){
       setmode("dark");
       document.body.style.backgroundColor="grey";
@@ -63,26 +74,26 @@ function App() { //it is a function based component . In return only one element
                  
  return (
    <>
-   <Navbar  title="Pushkar" aboutText="AboutTextUtils" mode={mode} togglemode={toggle} />
+   {/* <Navbar  title="Pushkar" aboutText="AboutTextUtils" mode={mode} togglemode={toggle} />
    <Alert alert={alert}/>
    <div className="container my-3">
    <Textform heading="Enter the text to analyze below" mode={mode} showAlert={showAlert}/> 
-   </div>
-  {/* <Router>
+   </div> */}
+  <Router>
     <Navbar  title="Pushkar" aboutText="AboutTextUtils" mode={mode} togglemode={toggle} />
     <Alert alert={alert}/>
     <div className="container my-3">
      <Switch>
           <Route exact path="/about">
-            <About />
+            <About mode={mode}/>
           </Route>
           <Route exact path="/">
-           <Textform heading="Enter the text to analyze below" mode={mode} showAlert={showAlert}/> 
+           <Textform heading="Try TEXTUTILS - word counter , character counter , remove extra spaces" mode={mode} showAlert={showAlert}/> 
           </Route>
           
       </Switch>
    </div>
-  </Router> */}
+  </Router>
   </>
   
  );
